@@ -1,5 +1,6 @@
 package unidad2.MetodoFabricacion;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -9,9 +10,10 @@ import java.awt.Graphics;
  */
 public class Texto extends Figura{
 
-    public Texto(int dimension, int x, int y, String nombre) {
-        super(dimension, x, y, nombre);
-        setSize(700, 800);
+    public Texto(int dimension, int tamaño, int x, int y, String nombre) {
+        super(dimension, tamaño, x, y, nombre);
+        setSize(400, 450);
+        dibujar();
     }
         
     @Override
@@ -23,8 +25,8 @@ public class Texto extends Figura{
     public void paint(Graphics g) {
         super.paint( g ); 
         g.setFont( new Font( "Monospaced", Font.BOLD, dimension ) );
-        g.drawString(nombre, x, y);
-        
+        g.setColor(Color.red);
+        g.drawString(nombre, x, y);        
     }
 
     

@@ -9,16 +9,18 @@ import javax.swing.JComponent;
 public abstract class Figura extends JComponent{
     
     protected int dimension; 
+    protected int tamaño;
     protected int x;
     protected int y;
     protected String nombre;
 
-    public Figura(int dimension, int x, int y, String nombre) {
+    public Figura(int dimension, int tamaño, int x, int y, String nombre) {
         this.dimension = dimension;
+        this.tamaño = tamaño;
         this.x = x;
         this.y = y;
         this.nombre = nombre;
-    }  
+    }
     
     public abstract void dibujar();
 
@@ -53,5 +55,12 @@ public abstract class Figura extends JComponent{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }        
-    
+
+    public int getTamaño() {
+        return tamaño;
+    }
+
+    public void setTamaño(int tamaño) {
+        this.tamaño = tamaño;
+    }        
 }
