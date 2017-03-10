@@ -39,8 +39,8 @@ public class Poligono extends Figura{
             g.drawRect( x, y , w, h );
         else if(nombre.equals("Circulo"))
             g.drawOval(x, y, w, h);            
-        else if(nombre.equals("Triangulo"))            
-            g.drawPolygon( new Triangulo(x1,y1,x2,y2) );
+        //else if(nombre.equals("Triangulo"))            
+            //g.drawPolygon( new Triangulo(x1,y1,x2,y2) );
         else if(dimension > 2){
             g.drawPolygon(new Polygon(dimension, tamaño));            
         }

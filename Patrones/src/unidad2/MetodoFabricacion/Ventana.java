@@ -52,6 +52,7 @@ public class Ventana extends JFrame{
         this.setLayout(null);        
         this.setSize(800, 600);  
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        this.setResizable(false);
         
         mt = new ManipularTexto();
         mp = new ManipularPoligono();
@@ -104,7 +105,7 @@ public class Ventana extends JFrame{
                     n = "";                               
                 if(rbPoligono.isSelected()){
                     mp.removeAll();
-                    mp.manipular(50, 50, d, 100, "hola");  
+                    mp.manipular(50, 50, d, 100, n);  
                     mp.crearFigura();
                     mp.presentacion();
                 }else{        

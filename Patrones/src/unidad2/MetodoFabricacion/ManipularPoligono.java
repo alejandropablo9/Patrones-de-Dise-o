@@ -1,6 +1,8 @@
 package unidad2.MetodoFabricacion;
 
 import java.awt.Color;
+import javafx.scene.layout.BorderPane;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -10,7 +12,8 @@ public class ManipularPoligono extends Manipulador{
    
     public ManipularPoligono(){
        super();      
-        setBackground(Color.GREEN);      
+        setBackground(Color.WHITE);
+        setBorder(BorderFactory.createLineBorder(Color.blue));
     }
    
     @Override

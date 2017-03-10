@@ -1,6 +1,7 @@
 package unidad2.MetodoFabricacion;
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -10,7 +11,8 @@ public class ManipularTexto extends Manipulador{
        
     public ManipularTexto(){       
        super();      
-       setBackground(Color.WHITE);    
+       setBackground(Color.WHITE);  
+       setBorder(BorderFactory.createLineBorder(Color.RED));
        //crearFigura();       
        //add(figura);
     }

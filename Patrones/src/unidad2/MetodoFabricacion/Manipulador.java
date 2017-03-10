@@ -37,7 +37,6 @@ public abstract class Manipulador extends JPanel{
         this.dimension = d;
         this.tamaño = t;
         this.nombre = n;      
-        System.out.println(this.nombre);
     }
     
     public void presentacion(){
