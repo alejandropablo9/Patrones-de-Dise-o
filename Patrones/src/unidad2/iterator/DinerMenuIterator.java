@@ -18,6 +18,7 @@ public class DinerMenuIterator implements Iterator {
   public DinerMenuIterator(MenuItem[] items){
     this.items = items;
   }
+
   @Override
   public Object next(){
     MenuItem menuItem = items[position];
@@ -32,6 +33,7 @@ public class DinerMenuIterator implements Iterator {
       return true;
     }
   }
+  
   //@Override
   public void remove(){
 
