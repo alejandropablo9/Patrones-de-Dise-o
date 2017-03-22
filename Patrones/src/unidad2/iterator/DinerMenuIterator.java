@@ -1,43 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package patroniterador;
+package unidad2.iterator;
+
 import java.util.Iterator;
 
 
 /**
  *
- * @author VickaRamirez
+ * @author alejandro
  */
-public class DinerMenuIterator implements Iterator {
-  MenuItem[] items;
-  int position = 0;
-
-  public DinerMenuIterator(MenuItem[] items){
-    this.items = items;
-  }
-
-  @Override
-  public Object next(){
-    MenuItem menuItem = items[position];
-    position = position + 1;
-    return menuItem;
-  }
-  @Override
-  public boolean hasNext(){
-    if(position >= items.length || items[position] == null){
-      return false;
-    }else{
-      return true;
-    }
-  }
+public class DinerMenuIterator implements Iterador {
   
-  //@Override
-  public void remove(){
+    MenuItem[] items;
+    int position = 0;
 
-  }
+    public DinerMenuIterator(MenuItem[] items){
+      this.items = items;
+    }
+
+    @Override
+    public Object next(){
+      MenuItem menuItem = items[position];
+      position = position + 1;
+      return menuItem;
+    }
+
+    @Override
+    public boolean hasNext(){
+        return !(position >= items.length || items[position] == null);    
+    }
+
+    /*
+    @Override
+    public void remove(){
+
+    }*/
+
+    @Override
+    public void iterador(int vi, int vf) {
+        
+    }
+
+    @Override
+    public void rango(int vi, int vf) {
+        
+    }
 }
 
     

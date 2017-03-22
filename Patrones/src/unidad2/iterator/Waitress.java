@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package patroniterador;
+
+package unidad2.iterator;
+
 import java.util.Iterator;
 
 /**
@@ -20,15 +17,15 @@ public class Waitress {
     }
     
     public void printMenu(){
-        Iterator pancakeIterator = pancakeHouseMenu.createIterator();
-        Iterator dinerIterator= dinerMenu.createIterator();
+        Iterador pancakeIterator = pancakeHouseMenu.createIterator();
+        Iterador dinerIterator= dinerMenu.createIterator();
         System.out.println("Menu\n-------\nBREAKFAST");
         printMenu(pancakeIterator);
         System.out.println("\nLUNCH");
         printMenu(dinerIterator);
     }
     
-    private void printMenu(Iterator iterator){
+    private void printMenu(Iterador iterator){
         while (iterator.hasNext()){
         MenuItem menuItem= (MenuItem)iterator.next();
         System.out.println(menuItem.getName() + ", ");

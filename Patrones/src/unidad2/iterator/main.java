@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package patroniterador;
+package unidad2.iterator;
 
 /**
  *
- * @author Ericko
+ * @author Alejandro
  */
 public class main {
   public static void main(String args []){

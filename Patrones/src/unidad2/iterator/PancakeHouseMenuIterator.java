@@ -1,32 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package patroniterador;
+package unidad2.iterator;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 /**
  *
- * @author Ericko
+ * @author alejandro
  */
-public class PancakeHouseMenuIterator implements Iterator{
-  int position = 0;
-  ArrayList l;
-  public PancakeHouseMenuIterator(ArrayList l){
-    this.l = l;
-  }
- @Override
+public class PancakeHouseMenuIterator implements Iterador{
+    
+    int position = 0;
+    ArrayList l;
+    
+    public PancakeHouseMenuIterator(ArrayList l){
+      this.l = l;
+    }
+    
+    @Override
     public boolean hasNext() {
         return position< l.size() ;
     }
-   @Override
+    
+    @Override
     public Object next() {
-    return l.get(position++);
+        return l.get(position++);
     }
-  
-  public void remove(){
 
-  }
+    /*
+    public void remove(){
+
+    }*/
+
+    @Override
+    public void iterador(int vi, int vf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void rango(int vi, int vf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
