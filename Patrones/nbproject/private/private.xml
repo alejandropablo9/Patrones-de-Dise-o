@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Decorador/Ventana/VentanaConcreta.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Decorador/Ventana/Test.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Decorador/Ventana/VentanaBorde.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Decorador/Ventana/VentanaBoton.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Decorador/Ventana/VentanaDecoradora.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Decorador/Ventana/Ventana.java</file>
+            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Observador/Test.java</file>
+            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Observador/ConjuntoEnteros.java</file>
+            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Observador/Observable.java</file>
+            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Observador/Imprimir.java</file>
+            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Observador/Totaliza.java</file>
+            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/Programacion/Patrones/src/unidad2/Observador/Observador.java</file>
         </group>
     </open-files>
 </project-private>

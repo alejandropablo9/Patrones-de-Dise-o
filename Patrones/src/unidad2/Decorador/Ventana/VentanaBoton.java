@@ -11,17 +11,15 @@ public class VentanaBoton extends VentanaDecoradora{
 
     @Override
     public void dibujar() {
-        JButton b = new JButton("BOTON");        
-        b.setBounds(125, 120, 150, 30);        
         v.dibujar();
-        addComponent(b);
-
+        JButton b = new JButton("BOTON");        
+        b.setBounds(125, 120, 150, 30);           
+        v.addComponent(b);
     }
     
     @Override
     public void addComponent(Component c){
-           v.addComponent(c);
-           
+           v.addComponent(c);           
     }
     
     @Override

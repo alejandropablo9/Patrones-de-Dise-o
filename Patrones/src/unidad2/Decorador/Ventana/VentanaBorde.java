@@ -3,14 +3,12 @@ package unidad2.Decorador.Ventana;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class VentanaBorde extends VentanaDecoradora{
         
     public VentanaBorde(Ventana v) {
-        super(v);
-       
+        super(v);       
     }
     
      @Override
@@ -20,10 +18,10 @@ public class VentanaBorde extends VentanaDecoradora{
     
     @Override
     public void dibujar() {
+        v.dibujar();
         JPanel borde = new JPanel();
         borde.setVisible(true);
-        borde.setBorder(BorderFactory.createLineBorder(Color.CYAN, 20));
-        v.dibujar();
+        borde.setBorder(BorderFactory.createLineBorder(Color.CYAN, 20));        
         addComponent(borde);                
     }
          
