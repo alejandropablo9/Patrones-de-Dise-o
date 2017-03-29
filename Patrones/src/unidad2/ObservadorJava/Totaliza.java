@@ -1,29 +1,31 @@
-package unidad2.Observador;
+package unidad2.ObservadorJava;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author Alejandro
  */
-public class Totaliza implements Observador{
+public class Totaliza implements  Observer{
     
-    private Observable s;
+    private final java.util.Observable s;
     private ArrayList  datos;
     
-    public Totaliza(Observable osv) {
-        s = osv;
-        s.registarObservador(this);
+    public Totaliza(java.util.Observable osv) {
+        this.s = osv;
+        this.s.addObserver(this);
     }
-    
     @Override
-    public void actualizar(Observable s) {
-        datos = ((ConjuntoEnteros)s).getDatos();  
-        System.out.println("total: " + total());        
+    public void update(Observable o, Object arg) {
+        ConjuntoEnteros ce = (ConjuntoEnteros) o;
+        datos = ce.getDatos(); 
+        System.out.println("total: " + total()); 
     }
-    
-    public int total(){
+        
+    private int total(){
         int total = 0;
         Iterator it = datos.iterator();        
         while(it.hasNext()){
@@ -31,5 +33,7 @@ public class Totaliza implements Observador{
         }
         return total;
     }
+
+    
     
 }

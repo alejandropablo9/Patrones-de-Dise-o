@@ -22,6 +22,12 @@ public class ConjuntoEnteros implements Observable{
         datos.add(i);
         notificar();
     }
+    
+    public void removerEntero(int index){        
+        if(index >= 0 && index < datos.size() && !datos.isEmpty())
+            datos.remove(index);
+        notificar();
+    }
 
     @Override
     public void registarObservador(Observador o) {
@@ -32,7 +38,7 @@ public class ConjuntoEnteros implements Observable{
     public void removerObservador(int i) {
         if(obs.size() > 0)
             obs.remove(i);
-    }
+    }    
 
     @Override
     public void notificar() {

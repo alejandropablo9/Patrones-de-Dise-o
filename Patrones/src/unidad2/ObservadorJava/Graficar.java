@@ -1,36 +1,38 @@
-package unidad2.Observador;
+package unidad2.ObservadorJava;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author Alejandro
  */
-public class Graficar implements Observador{
+public class Graficar  implements Observer{
 
-    private Observable s;
+    private final Observable s;
     private ArrayList  datos;
     
     public Graficar(Observable osv) {
-        s = osv;
-        s.registarObservador(this);
+        this.s = osv;
+        this.s.addObserver(this);
     }
     
     @Override
-    public void actualizar(Observable s) {
-        datos = ((ConjuntoEnteros)s).getDatos();  
-        //System.out.println("total: " + total());
+    public void update(Observable o, Object arg) {
+        ConjuntoEnteros ce = (ConjuntoEnteros) o;
+        datos = ce.getDatos(); 
         graficar();
     }
-        
-    public void graficar(){
+   
+    private void graficar(){
         Iterator it = datos.iterator();
         System.out.println("Gráfica");
         while(it.hasNext()){
           int dato = (Integer)it.next();
 
-          System.out.print(" " + dato + " : ");
+          System.out.print(dato + " : \t");
           for(int i = 0; i < dato; i++){
             System.out.print("*");
           }
@@ -38,4 +40,5 @@ public class Graficar implements Observador{
         }
         System.out.println("-------------------------");
     }
+    
 }

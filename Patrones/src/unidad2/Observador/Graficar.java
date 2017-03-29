@@ -30,7 +30,7 @@ public class Graficar implements Observador{
         while(it.hasNext()){
           int dato = (Integer)it.next();
 
-          System.out.print(" " + dato + " : ");
+          System.out.print(dato + " : \t");
           for(int i = 0; i < dato; i++){
             System.out.print("*");
           }

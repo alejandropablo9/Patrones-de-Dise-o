@@ -1,51 +1,36 @@
 
-package unidad2.Observador;
-
+package unidad2.ObservadorJava;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Observable;
 
 /**
  *
  * @author Alejandro
  */
-public class ConjuntoEnteros implements Observable{
+public class ConjuntoEnteros extends Observable{
     
     private ArrayList<Integer> datos;
     private ArrayList obs;
     
     public ConjuntoEnteros(){
-        datos = new ArrayList<Integer>();     
-        obs =  new ArrayList();
+        datos = new ArrayList<Integer>();                    ;
     }
     
     public void addEntero(Integer i){
         datos.add(i);
-        notificar();
+        this.setChanged();
+        this.notifyObservers();
     }
-
-    @Override
-    public void registarObservador(Observador o) {
-        obs.add(o);        
+    
+    public void removerEntero(int index){        
+        if(index >= 0 && index < datos.size() && !datos.isEmpty())
+            datos.remove(index);
+        this.setChanged();
+        this.notifyObservers();
     }
-
-    @Override
-    public void removerObservador(int i) {
-        if(obs.size() > 0)
-            obs.remove(i);
-    }
-
-    @Override
-    public void notificar() {
-        Iterator it = obs.iterator();
-        while(it.hasNext()){
-            Observador ob;
-            ob = (Observador) it.next();
-            ob.actualizar(this);
-        }
-    }
+   
     
     public ArrayList getDatos(){
         return datos;
-    }
-    
+    }    
 }
