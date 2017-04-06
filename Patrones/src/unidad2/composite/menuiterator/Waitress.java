@@ -27,5 +27,17 @@ public class Waitress {
 				}
 			} catch (UnsupportedOperationException e) {}
 		}
-	}        
+	}   
+        
+        public void printTotal(){
+            Iterator<MenuComponent> iterator = allMenus.createIterator();
+                double total = 0.0;		
+		while (iterator.hasNext()) {
+			MenuComponent menuComponent = iterator.next();
+			try {
+				total += menuComponent.getPrice();
+			} catch (UnsupportedOperationException e) {}                        
+		}
+                System.out.println("Total: " + total);
+        }
 }

@@ -11,7 +11,6 @@ public abstract class MenuComponent {
 	public MenuComponent getChild(int i) {
 		throw new UnsupportedOperationException();
 	}
-  
 	public String getName() {
 		throw new UnsupportedOperationException();
 	}
