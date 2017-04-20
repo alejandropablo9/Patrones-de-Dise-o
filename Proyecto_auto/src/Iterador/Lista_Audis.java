@@ -34,34 +34,34 @@ public class Lista_Audis {
 
     public DefaultTableModel modelo_tabla(Iterador it) {
         DefaultTableModel modelo;
-        String[] titulos = { "Nombre", "Costo"};
+        String[] titulos = {"Nombre", "Costo"};
         String[] registros = new String[2];
         modelo = new DefaultTableModel(null, titulos);
 
         while (it.hasNext()) {
             AudiGenerico temp = it.next();
-            if (temp.getTipo() != 'V') { // Checa que no sea un vacio
+            if (temp.getModelo() != "") { // Checa que no sea un vacio
 
                 //registros[0] = temp.getTipo() + "";
                 registros[0] = temp.getModelo();
-                registros[1] = temp.getPrecio() + "";
+                registros[1] = temp.precio() + "";
                 modelo.addRow(registros);
             }
         }
         return modelo;
     }
-
+/*
     public DefaultComboBoxModel modelo_combo(IteraTipo it) {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         while (it.hasNext()) {
             AudiGenerico temp = it.next();
-            if (temp.getTipo() != 'V') {
+            if (temp.getModelo() != "") {
                 modelo.addElement(temp.getModelo());
             }
         }
         return modelo;
     }
-
+*/
     public int size() {
         return array_audis.size();
     }
@@ -75,7 +75,7 @@ public class Lista_Audis {
         while (it.hasNext()) {
             AudiGenerico temp = it.next();
             if (temp.getModelo().equalsIgnoreCase(nombre)) {
-                precio = temp.getPrecio();
+                precio = temp.precio();
             }
         }
         return precio;
@@ -83,7 +83,7 @@ public class Lista_Audis {
 
     public AudiGenerico get_elegido(String nombre, Iterador it) {
         // Imaginar que no existe
-        AudiGenerico elegido = new AudiGenerico('V', "", 0);
+        AudiGenerico elegido = new AudiGenerico( "", 0);
         while (it.hasNext()) {
             AudiGenerico temp = it.next();
          

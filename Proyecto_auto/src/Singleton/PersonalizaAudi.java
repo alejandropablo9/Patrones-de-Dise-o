@@ -34,6 +34,7 @@ public class PersonalizaAudi extends javax.swing.JFrame implements Sujeto {
     
     private static PersonalizaAudi instancia = null;
     private ArrayList observadores;
+    private static Factura vtnFactura = null;
     
     private final Audi a1 = new AudiGenerico("A1", 299900.0);
     private final Audi a3 = new AudiGenerico("A3", 389900.0);
@@ -262,6 +263,7 @@ public class PersonalizaAudi extends javax.swing.JFrame implements Sujeto {
         btnFacturar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnFacturar.setForeground(new java.awt.Color(255, 255, 255));
         btnFacturar.setText("Factura");
+        btnFacturar.setEnabled(false);
         btnFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFacturarActionPerformed(evt);
@@ -380,7 +382,8 @@ public class PersonalizaAudi extends javax.swing.JFrame implements Sujeto {
                     formateador.format(total_intereses));
             System.out.println(base.getDescripcion());
             System.out.println("$ " + base.precio());
-            mPago.setEnabled(true);            
+            mPago.setEnabled(true);          
+            btnFacturar.setEnabled(true);
             notificaObservadores();
         }else{
             JOptionPane.showMessageDialog(null, "Elige un audi");
@@ -393,6 +396,7 @@ public class PersonalizaAudi extends javax.swing.JFrame implements Sujeto {
         listInteriores.clearSelection();
         motores.clearSelection();
         mPago.setEnabled(false);
+        btnFacturar.setEnabled(false);
         letTotal.setText("Total $0.00");
     }//GEN-LAST:event_btnRestablecerActionPerformed
 
@@ -422,7 +426,7 @@ public class PersonalizaAudi extends javax.swing.JFrame implements Sujeto {
     }//GEN-LAST:event_mPagoItemStateChanged
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
-        
+        vtnFactura = Factura.getInstancia(base, total_intereses);
     }//GEN-LAST:event_btnFacturarActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

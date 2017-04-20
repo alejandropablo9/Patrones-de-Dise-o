@@ -4,10 +4,24 @@
  * and open the template in the editor.
  */
 package Singleton;
-import Decorador.AudiSedan;
+import Adaptador.AudiCellRenderer;
+import Adaptador.AudiEntry;
+import Adaptador.ComponentCellRenderer;
+import Adaptador.ComponentEntry;
+import Decorador.Audi;
+import Decorador.AudiGenerico;
+import Decorador.Color.AzulMetalizado;
+import Decorador.Color.NegroMetalizado;
+import Decorador.Color.RojoMisano;
+import Decorador.Interior.TapizadoHerzklopfen;
+import Decorador.Interior.TapizadoMilano;
+import Decorador.Interior.TapizadoPielAlcantara;
+import Decorador.Motor.TFSIEgo;
+import Decorador.Motor.TFSISline;
+import Decorador.Motor.TFSIUrban;
 import Iterador.IteraLista;
 import Iterador.IteraPrecio;
-import Iterador.IteraTipo;
+//import Iterador.IteraTipo;
 import Iterador.Lista_Audis;
 import Observador.Observable;
 import Observador.Observador;
@@ -17,30 +31,70 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Main.Main;
+import java.text.DecimalFormat;
 
 /**
  *
  * @author Ericko
  */
 public class SingletonEligeAudi extends JFrame implements Sujeto {
-
+    private javax.swing.JList<AudiEntry> listAudi;
+    private javax.swing.JList<ComponentEntry> listExteriores;
+    private javax.swing.JList<ComponentEntry> listInteriores;
+    private javax.swing.JComboBox<String> mPago;
+    private javax.swing.JList<ComponentEntry> motores;
+    private ArrayList observadores;
     boolean todos;
     Lista_Audis ls;
     IteraLista it;
     IteraPrecio itp;
-    IteraTipo itt;
-    AudiSedan audiA1;
-    AudiSedan audiA2;
-    AudiSedan audiA3;
-    AudiSedan audiQ5;
-    AudiSedan audiQ7;
-    AudiSedan audiQ9;
-    private double total_pagar;
+    //IteraTipo itt;
+  
+    private final Audi a1 = new AudiGenerico("A1", 299900.0);
+    private final Audi a3 = new AudiGenerico("A3", 389900.0);
+    
+    private Audi base = new AudiGenerico("Base", 0);
+    
+    private final Audi decTFSIEgo = new TFSIEgo(base);
+    private final Audi decTFSLine = new TFSISline(base);
+    private final Audi decTFSIUrban = new TFSIUrban(base);
+    
+    private final Audi decAzulM = new AzulMetalizado(base);
+    private final Audi decNegroM = new NegroMetalizado(base);
+    private final Audi decRojoM = new RojoMisano(base);
+    
+    private final Audi decTaH = new TapizadoHerzklopfen(base);
+    private final Audi decTaM = new TapizadoMilano(base);
+    private final Audi decTaP = new TapizadoPielAlcantara(base);
+    
+    private double total_pagar, costo_unitario, total_intereses;
+    private DecimalFormat formateador = new DecimalFormat("###,###.##");
+    
+    private final AudiEntry audis[] = { 
+        new AudiEntry(a1, "src/imagen/audis/A1_64.png"), 
+        new AudiEntry(a3, "src/imagen/audis/A3.png"),  
+    };     
+    private final ComponentEntry motoresE [] = {
+        new ComponentEntry (decTFSIUrban, "TFSI Urban", "src/imagen/audis/motor1.png"),
+        new ComponentEntry (decTFSIEgo, "TFSI Ego", "src/imagen/audis/motor3.png"),
+        new ComponentEntry (decTFSLine, "TFSI S line", "src/imagen/audis/motor2.png")
+    };
+    private final ComponentEntry interiores [] = {
+        new ComponentEntry (decTaH, "Tapizado Herzklopfen", "src/imagen/audis/interior1.png"),
+        new ComponentEntry (decTaM, "Tapizado Milano", "src/imagen/audis/interior2.png"),
+        new ComponentEntry (decTaP, "Tapizado Piel Alcantara", "src/imagen/audis/interior3.png")
+    };
+    private final ComponentEntry exteriores [] = {
+        new ComponentEntry (decAzulM, "Azul Metalizado", "src/imagen/audis/color_am.png"),
+        new ComponentEntry (decNegroM, "Negro Metalizado", "src/imagen/audis/color_nm.png"),
+        new ComponentEntry (decRojoM, "Rojo Misano", "src/imagen/audis/color_rm.png")
+    };
+
     private double costo_unidad;
     private static int numIns = 0;
     private static SingletonEligeAudi instancia;
     // Observador
-    private ArrayList observadores;
+   
 
     protected SingletonEligeAudi() {
         numIns++;
@@ -57,19 +111,20 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
         ls = new Lista_Audis();
         it = new IteraLista(ls);
 
-        audiA1 = new AudiSedan('C', "audiA1", 110000);
-        audiA2 = new AudiSedan('C', "audiA2", 120000);
-        audiA3 = new AudiSedan('C', "audiA3", 150000);
-        audiQ5 = new AudiSedan('C', "audiQ5", 200000);
-        audiQ7 = new AudiSedan('F', "audiQ7", 215000);
-        audiQ9 = new AudiSedan('F', "audiQ9", 350000);
-
-        ls.add(audiA1);
-        ls.add(audiA2);
-        ls.add(audiA3);
-        ls.add(audiQ5);
-        ls.add(audiQ7);
-        ls.add(audiQ9);
+         observadores = new ArrayList();
+         /*
+        listAudi.setCellRenderer(new AudiCellRenderer());
+        listAudi.setVisibleRowCount(3);
+        motores.setCellRenderer(new ComponentCellRenderer());
+        motores.setVisibleRowCount(3);
+        listExteriores.setCellRenderer(new ComponentCellRenderer());
+        listExteriores.setVisibleRowCount(3);        
+        listInteriores.setCellRenderer(new ComponentCellRenderer());
+        listInteriores.setVisibleRowCount(3);      
+*/
+        ls.add((AudiGenerico)a1);
+        ls.add((AudiGenerico)a3);
+        
 
         System.out.println(ls.size());
         //ls.mostrar(it);
@@ -99,7 +154,6 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
         radSinFiltro = new javax.swing.JRadioButton();
         radFiltros = new javax.swing.JRadioButton();
         panelFiltros = new javax.swing.JPanel();
-        cbxEligeTipo = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtMayor = new javax.swing.JTextField();
@@ -113,7 +167,8 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
         etiElegido = new javax.swing.JLabel();
 
         setTitle("Audis");
-       
+        setIconImage(getIconImage());
+        setIconImages(null);
 
         panelMuestraCafes.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultados Busqueda"));
 
@@ -181,25 +236,22 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
 
         panelFiltros.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros"));
 
-        cbxEligeTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sedan", "Camionetas" }));
-        cbxEligeTipo.setEnabled(false);
-        cbxEligeTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxEligeTipoActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Precio Mayor a:");
 
         jLabel2.setText("Precio Menor a:");
 
         txtMayor.setEnabled(false);
-        txtMayor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMayorKeyReleased(evt);
+        txtMayor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMayorActionPerformed(evt);
             }
+        });
+        txtMayor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMayorKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMayorKeyReleased(evt);
             }
         });
 
@@ -220,7 +272,6 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
             .addGroup(panelFiltrosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxEligeTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelFiltrosLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -234,9 +285,7 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
         panelFiltrosLayout.setVerticalGroup(
             panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFiltrosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbxEligeTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addGroup(panelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtMayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -273,7 +322,7 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
                 .addGap(209, 209, 209)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(etiNumIns)
                 .addGap(52, 52, 52))
@@ -283,8 +332,7 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAcepta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar)
-                        .addGap(18, 18, 18))
+                        .addComponent(btnCancelar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -296,7 +344,8 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
                                 .addComponent(radEfectivo)
                                 .addGap(33, 33, 33)
                                 .addComponent(radTarjeta)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -361,24 +410,24 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void radFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radFiltrosActionPerformed
-        cbxEligeTipo.setEnabled(true);
+        
         txtMayor.setEnabled(true);
         txtMenor.setEnabled(true);
         todos = false;
     }//GEN-LAST:event_radFiltrosActionPerformed
 
     private void radSinFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radSinFiltroActionPerformed
-        cbxEligeTipo.setEnabled(false);
+      //  cbxEligeTipo.setEnabled(false);
         txtMayor.setEnabled(false);
         txtMenor.setEnabled(false);
         iniciar();
     }//GEN-LAST:event_radSinFiltroActionPerformed
 
     private void tablaResultadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaResultadoMousePressed
-        if (evt.getClickCount() == 1) {
+        if (evt.getClickCount() == 2) {
             int fila = tablaResultado.getSelectedRow();
             costo_unidad = Float.parseFloat(tablaResultado.getValueAt(fila, 1).toString());
-            etiElegido.setText(tablaResultado.getValueAt(fila, 1).toString());
+            etiElegido.setText(tablaResultado.getValueAt(fila, 0).toString());
             
                 total_pagar = costo_unidad *1;
                 txtTotalPagar.setText("$ " + total_pagar);
@@ -387,19 +436,6 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
             cambiosMedicion();
         }
     }//GEN-LAST:event_tablaResultadoMousePressed
-
-    private void cbxEligeTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEligeTipoActionPerformed
-        if (cbxEligeTipo.getSelectedIndex() == 0) {
-            // Calientes
-            itt = new IteraTipo(ls, 'C');
-            tabla(ls.modelo_tabla(itt));
-
-        } else {
-            // Frios
-            itt = new IteraTipo(ls, 'F');
-            tabla(ls.modelo_tabla(itt));
-        }
-    }//GEN-LAST:event_cbxEligeTipoActionPerformed
 
     private void txtMayorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMayorKeyTyped
         char c = evt.getKeyChar();
@@ -435,6 +471,10 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
         }
     }//GEN-LAST:event_txtMenorKeyReleased
 
+    private void txtMayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMayorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMayorActionPerformed
+
     public static SingletonEligeAudi getInstancia() {
         if (instancia == null) {
             instancia = new SingletonEligeAudi();
@@ -454,7 +494,6 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcepta;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JComboBox cbxEligeTipo;
     private javax.swing.JLabel etiEleccion;
     private javax.swing.JLabel etiElegido;
     public static javax.swing.JLabel etiNumIns;
@@ -493,7 +532,7 @@ public class SingletonEligeAudi extends JFrame implements Sujeto {
         for (int i = 0; i < observadores.size(); i++) {
             Observador observador = (Observador) observadores.get(i);
             //(float costo_total,float costo_unitario,int cantidad, String nombre);
-            observador.actualiza(total_pagar, costo_unidad, obtenCantidad(), etiElegido.getText());
+            observador.actualiza(total_pagar, costo_unidad, etiElegido.getText());
         }
     }
     public void cambiosMedicion() {

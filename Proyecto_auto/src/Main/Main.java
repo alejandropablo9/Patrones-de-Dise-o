@@ -7,7 +7,6 @@ package Main;
 
 
 import Singleton.PersonalizaAudi;
-import Singleton.SingletonFabricaAudi;
 import Singleton.SingletonEligeAudi;
 import javax.swing.JOptionPane;
 
@@ -112,20 +111,6 @@ public final class Main extends javax.swing.JFrame {
         }else{
             vtnPersonaliza.setVisible(true);
         }
-        /*
-        if (abierta_ec == false) {
-            try {
-                SingletonFabricaAudi instancia = SingletonFabricaAudi.getInstancia();
-                //imagenD.add(instancia);
-               // instancia.toFront();
-                //instancia.setLocation(15, 1);
-                abierta_cc = true;
-            } catch (Exception e) {
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Operacion Elegir un Audi pre");
-        }
-        */
     }//GEN-LAST:event_menuPersonalizaActionPerformed
 
     /**

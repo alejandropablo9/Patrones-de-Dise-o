@@ -5,7 +5,7 @@
  */
 package Iterador;
 
-import Decorador.AudiSedan;
+import Decorador.*;
 
 /**
  *
@@ -34,27 +34,33 @@ public class IteraPrecio implements Iterador {
     }
 
     @Override
-    public AudiSedan next() {
-        AudiSedan audi = lista.get(contador++);
-        AudiSedan vacio = new AudiSedan('V', "", 0);
+    public AudiGenerico next() {
+        AudiGenerico audi = lista.get(contador++);
+       AudiGenerico vacio = new AudiGenerico("", 0);
         if (condicion == 'M') {
-            if (audi.getPrecio() >= precio) {
-                return audi;
-            } else {
-                return vacio;
+            if (audi.precio() >= precio) {
+                return audi; 
             }
+            /*
+            else {
+                return vacio ;
+            }
+*/
         }
         if (condicion == 'm') {
-            if (audi.getPrecio() <= precio) {
+            if (audi.precio() <= precio) {
                 return audi;
-            } else {
-                return vacio;
-            }
-        } else {
-            return vacio;
-        }
-
+            } 
+          //  else {
+               // return vacio;
+            //}
+      }
+        //else {
+        //    return null ;
+        ///}
+        return vacio;
     }
+        
 
     @Override
     public void remove() {
