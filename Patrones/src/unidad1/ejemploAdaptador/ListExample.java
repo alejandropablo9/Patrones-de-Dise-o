@@ -35,7 +35,7 @@ public class ListExample extends JPanel{
         booklist = new JList(books);
         booklist.setCellRenderer(new BookCellRenderer());
         booklist.setVisibleRowCount(4);
-        JScrollPane pane = new JScrollPane(booklist);
+        JScrollPane pane = new JScrollPane(booklist);        
         
         add(pane, BorderLayout.NORTH);
         add(button, BorderLayout.SOUTH);
