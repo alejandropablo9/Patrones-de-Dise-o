@@ -17,6 +17,7 @@ public class ComponenteTexto extends JTextField implements Serializable,
     
     private int longMax;
     private int longMin = 1;   
+    //private boolean activado = false;
     
     public ComponenteTexto(){
         super();
@@ -81,6 +82,7 @@ public class ComponenteTexto extends JTextField implements Serializable,
     @Override
     public void focusLost(FocusEvent e) {        
         if(this.getText().length() < this.getLongMin()){
+            //this.requestFocus();
             JOptionPane.showMessageDialog(null, "Caracteres minimos requeridos " + this.getLongMin());
         }
     }

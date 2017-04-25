@@ -22,7 +22,7 @@ public class VentanaPrueba extends JFrame{
         ((ComponenteTexto)compTexto2).setLongMax(10);
         ((ComponenteTexto)compTexto2).setLongMin(5);
         this.setLayout(new FlowLayout());
-        //this.add(compTexto);
+        this.add(compTexto);
         this.add(compTexto2);
         this.setSize(400, 300);
         this.setTitle("Prueba"); 
