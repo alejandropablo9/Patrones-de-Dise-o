@@ -24,31 +24,31 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-              <Component id="componenteCompuesto1" min="-2" pref="168" max="-2" attributes="0"/>
-              <EmptySpace pref="136" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+              <Component id="etiquetasCampo2" min="-2" pref="132" max="-2" attributes="0"/>
+              <EmptySpace pref="154" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-              <Component id="componenteCompuesto1" min="-2" pref="68" max="-2" attributes="0"/>
-              <EmptySpace pref="171" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <Component id="etiquetasCampo2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="218" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="Componentecompuesto.ComponenteCompuesto" name="componenteCompuesto1">
+    <Component class="componentesdatos.EtiquetasCampo" name="etiquetasCampo2">
       <Properties>
-        <Property name="numeroEtiquetas" type="int" value="3"/>
-        <Property name="posiciones" type="[Ljava.lang.String;" editor="org.netbeans.beaninfo.editors.StringArrayEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="arriba"/>
-            <StringItem index="1" value="izquierda"/>
-            <StringItem index="2" value="derecha"/>
+        <Property name="etiquetas" type="[Ljava.lang.String;" editor="org.netbeans.beaninfo.editors.StringArrayEditor">
+          <StringArray count="4">
+            <StringItem index="0" value=""/>
+            <StringItem index="1" value=""/>
+            <StringItem index="2" value=""/>
+            <StringItem index="3" value=""/>
           </StringArray>
         </Property>
       </Properties>

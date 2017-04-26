@@ -3,7 +3,9 @@ package componentesdatos;
 import java.awt.BorderLayout;
 import java.io.Serializable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,62 +14,91 @@ import javax.swing.JPanel;
 public final class EtiquetasCampo extends JPanel implements Serializable{
 
     private JLabel[] titulos;
-    private ComponenteTexto campo;
+    private String[] etiquetas;
+    private final String[] posiciones = {"LEFT", "RIGHT", "UP", "DOWN"};
+    private ComponenteTexto input;
     
     public EtiquetasCampo(){
+        super();
         init();
     }
     
-    public void init(){
-        titulos = new JLabel[1];
-        titulos[0] = new JLabel("titulo");
-        campo = new ComponenteTexto();
+    private void init(){        
+        titulos = new JLabel[4];
+        for(int i = 0; i < titulos.length; i++){
+            titulos[i] = new JLabel();
+        }                
+        input = new ComponenteTexto();
         this.setLayout(new BorderLayout());   
-        this.add(campo, BorderLayout.CENTER);
-        this.add(titulos[0], BorderLayout.WEST);
+        this.add(input, BorderLayout.CENTER);        
+        this.setSize(200, 400);    
     }
     
-    public void setlongMax(int longMax){
-        campo.setLongMax(longMax);
+    public void setLongMax(int longMax){
+        input.setLongMax(longMax);
+    }
+    
+    public void setLongMin(int longMin){
+        input.setLongMin(longMin);
+    }
+    
+    public int getLongMax(){
+        return input.getLongMax();
+    }
+    
+    public int getLongMin(){
+        return input.getLongMin();
     }
 
     public JLabel[] getTitulos() {
         return titulos;
-    }        
+    }
 
     public void setTitulos(JLabel[] titulos) {
         this.titulos = titulos;
-        for(int i = 0; i < titulos.length; i++){
-            switch(i){
-                case 0: this.add(this.titulos[i], BorderLayout.WEST);
-                break;
-                case 1: this.add(this.titulos[i], BorderLayout.NORTH);
-                break;
-                case 2: this.add(this.titulos[i], BorderLayout.EAST);
-                break;
-                case 3: this.add(this.titulos[i], BorderLayout.SOUTH);
-                break;                
-            }
+    }
+
+    public String[] getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(String[] etiquetas) {
+        if(etiquetas.length == this.titulos.length){
+            this.etiquetas = etiquetas;
+            nombrarEtiquetas(etiquetas);
+            posicionarEtiquetas();
+        }else{
+            JOptionPane.showMessageDialog(null, "el arreglo debe ser de tamaño: " + titulos.length);
+        }
+    }
+
+    public ComponenteTexto getInput() {
+        return input;
+    }                 
+    
+    private void nombrarEtiquetas(String[] nombreTitulos){        
+        for(int i = 0; i < this.titulos.length; i++){
+            this.titulos[i].setText(nombreTitulos[i]);
+            this.titulos[i].setHorizontalAlignment(JTextField.CENTER);
+            this.titulos[i].setBounds(
+                this.titulos[i].getBounds().x,
+                this.titulos[i].getBounds().y,
+                this.titulos[i].getBounds().width + 100,
+                this.titulos[i].getBounds().height
+            );
         }
     }
     
-    public void nTitulos(int n){
-        titulos = new JLabel[n];
-        for(int i = 0; i < titulos.length; i++){
-            titulos[i] = new JLabel();
-        }
+    private void posicionarEtiquetas(){
+        add(titulos[0], BorderLayout.WEST);
+        add(titulos[1], BorderLayout.EAST);        
+        add(titulos[2], BorderLayout.NORTH);
+        add(titulos[3], BorderLayout.SOUTH);
+    }
+
+    public String[] getPosiciones() {
+        return posiciones;
     }
     
-    public void setTitulo(int nLabel, String titulo){
-        try{
-            titulos[nLabel].setText(titulo);
-        }catch(ArrayIndexOutOfBoundsException e){
-            e.printStackTrace();
-        }        
-    }
-    
-    public void setPosicion(int nLabel, String posicion){
-    
-    }
     
 }

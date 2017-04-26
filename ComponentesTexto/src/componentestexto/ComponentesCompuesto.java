@@ -23,28 +23,27 @@ public class ComponentesCompuesto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        componenteCompuesto1 = new Componentecompuesto.ComponenteCompuesto();
+        etiquetasCampo2 = new componentesdatos.EtiquetasCampo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        componenteCompuesto1.setNumeroEtiquetas(3);
-        componenteCompuesto1.setPosiciones(new String[] {"arriba", "izquierda", "derecha"});
+        etiquetasCampo2.setEtiquetas(new String[] {"", "", "", ""});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(componenteCompuesto1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGap(114, 114, 114)
+                .addComponent(etiquetasCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(componenteCompuesto1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addComponent(etiquetasCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,6 +85,6 @@ public class ComponentesCompuesto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Componentecompuesto.ComponenteCompuesto componenteCompuesto1;
+    private componentesdatos.EtiquetasCampo etiquetasCampo2;
     // End of variables declaration//GEN-END:variables
 }
