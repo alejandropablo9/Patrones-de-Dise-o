@@ -24,26 +24,36 @@ public class ComponentesCompuesto extends javax.swing.JFrame {
     private void initComponents() {
 
         etiquetasCampo2 = new componentesdatos.EtiquetasCampo();
+        etiquetasCampo3 = new componentesdatos.EtiquetasCampo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        etiquetasCampo2.setEtiquetas(new String[] {"", "", "", ""});
+        etiquetasCampo2.setEtiquetas(new String[] {"Edad", "(años)", "", ""});
+
+        etiquetasCampo3.setEtiquetas(new String[] {"izquierda", "derecha", "arriba", "abajo"});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(etiquetasCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(etiquetasCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(etiquetasCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(etiquetasCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(etiquetasCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(159, 159, 159))
         );
 
         pack();
@@ -86,5 +96,6 @@ public class ComponentesCompuesto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private componentesdatos.EtiquetasCampo etiquetasCampo2;
+    private componentesdatos.EtiquetasCampo etiquetasCampo3;
     // End of variables declaration//GEN-END:variables
 }

@@ -79,13 +79,7 @@ public final class EtiquetasCampo extends JPanel implements Serializable{
     private void nombrarEtiquetas(String[] nombreTitulos){        
         for(int i = 0; i < this.titulos.length; i++){
             this.titulos[i].setText(nombreTitulos[i]);
-            this.titulos[i].setHorizontalAlignment(JTextField.CENTER);
-            this.titulos[i].setBounds(
-                this.titulos[i].getBounds().x,
-                this.titulos[i].getBounds().y,
-                this.titulos[i].getBounds().width + 100,
-                this.titulos[i].getBounds().height
-            );
+            this.titulos[i].setHorizontalAlignment(JTextField.CENTER);            
         }
     }
     

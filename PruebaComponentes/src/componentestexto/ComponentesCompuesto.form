@@ -23,19 +23,29 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-              <Component id="etiquetasCampo2" min="-2" pref="132" max="-2" attributes="0"/>
-              <EmptySpace pref="154" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="etiquetasCampo2" min="-2" pref="132" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                      <Component id="etiquetasCampo3" min="-2" pref="176" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="135" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="etiquetasCampo2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="218" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="etiquetasCampo3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,10 +55,22 @@
       <Properties>
         <Property name="etiquetas" type="[Ljava.lang.String;" editor="org.netbeans.beaninfo.editors.StringArrayEditor">
           <StringArray count="4">
-            <StringItem index="0" value=""/>
-            <StringItem index="1" value=""/>
+            <StringItem index="0" value="Edad"/>
+            <StringItem index="1" value="(a&#xf1;os)"/>
             <StringItem index="2" value=""/>
             <StringItem index="3" value=""/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="componentesdatos.EtiquetasCampo" name="etiquetasCampo3">
+      <Properties>
+        <Property name="etiquetas" type="[Ljava.lang.String;" editor="org.netbeans.beaninfo.editors.StringArrayEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="izquierda"/>
+            <StringItem index="1" value="derecha"/>
+            <StringItem index="2" value="arriba"/>
+            <StringItem index="3" value="abajo"/>
           </StringArray>
         </Property>
       </Properties>
