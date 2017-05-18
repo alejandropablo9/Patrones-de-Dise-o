@@ -1,0 +1,25 @@
+Ejemplo de una aplicacion empresarial utilizando jsp 
+aplicacion: agenda de citas a pacientes de un médico
+
+Paciente: 
+-idPaciente
+-RFC
+-Nombre
+-FechaNac
+-Estatura
+-Sexo
+
+Citas:
+-fecha
+-hora
+-paciente
+
+script de creacion de la tabla
+
+CREATE TABLE PACIENTE(
+	IDPACIENTE	INTEGER PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+	NOMBRE		VARCHAR(50),
+	FECHANAC	DATE,
+	ESTATURA	INTEGER,
+	SEXO		CHAR		
+);

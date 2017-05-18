@@ -42,7 +42,7 @@ public class PreguntaOpMultiple extends JPanel implements Serializable{
             this.opciones.setRespuestas(opciones);
             this.agregarRespuestas();
         }else{
-            JOptionPane.showMessageDialog(null, "debe de haber 2 o más opciones");
+            JOptionPane.showMessageDialog( null, "debe de haber 2 o más opciones" );
         }
     }
         
@@ -50,7 +50,7 @@ public class PreguntaOpMultiple extends JPanel implements Serializable{
         if(respuesta > 0 && respuesta < opciones.getOpciones().length + 1)
             this.respuesta = respuesta;
         else
-            JOptionPane.showMessageDialog(null, "La respuesta sobre pasa el numero de opciones: ");
+            JOptionPane.showMessageDialog( null, "La numero de respuesta debe de ser entre 1 y " + opciones.getSize() );
     }
     
     public void setPregunta(String pregunta){
