@@ -1,4 +1,4 @@
-package mx.edu.itoaxaca.citaspacientes.cotrol.exceptions;
+package mx.edu.itoaxaca.citaspacientes.control.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

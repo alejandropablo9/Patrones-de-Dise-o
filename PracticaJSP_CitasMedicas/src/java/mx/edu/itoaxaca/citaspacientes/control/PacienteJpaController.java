@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.edu.itoaxaca.citaspacientes.cotrol;
+package mx.edu.itoaxaca.citaspacientes.control;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,8 +14,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.UserTransaction;
-import mx.edu.itoaxaca.citaspacientes.cotrol.exceptions.NonexistentEntityException;
-import mx.edu.itoaxaca.citaspacientes.cotrol.exceptions.RollbackFailureException;
+import mx.edu.itoaxaca.citaspacientes.control.exceptions.NonexistentEntityException;
+import mx.edu.itoaxaca.citaspacientes.control.exceptions.RollbackFailureException;
 import mx.edu.itoaxaca.citaspacientes.modelo.Paciente;
 
 /**
@@ -51,7 +51,7 @@ public class PacienteJpaController implements Serializable {
             throw ex;
         } finally {
             if (em != null) {
-                em.close();
+               // em.close();
             }
         }
     }
@@ -79,7 +79,7 @@ public class PacienteJpaController implements Serializable {
             throw ex;
         } finally {
             if (em != null) {
-                em.close();
+               // em.close();
             }
         }
     }
@@ -107,7 +107,7 @@ public class PacienteJpaController implements Serializable {
             throw ex;
         } finally {
             if (em != null) {
-                em.close();
+               // em.close();
             }
         }
     }
@@ -132,7 +132,7 @@ public class PacienteJpaController implements Serializable {
             }
             return q.getResultList();
         } finally {
-            em.close();
+           // em.close();
         }
     }
 
@@ -141,7 +141,7 @@ public class PacienteJpaController implements Serializable {
         try {
             return em.find(Paciente.class, id);
         } finally {
-            em.close();
+           // em.close();
         }
     }
 
@@ -154,7 +154,7 @@ public class PacienteJpaController implements Serializable {
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
         } finally {
-            em.close();
+           // em.close();
         }
     }
     

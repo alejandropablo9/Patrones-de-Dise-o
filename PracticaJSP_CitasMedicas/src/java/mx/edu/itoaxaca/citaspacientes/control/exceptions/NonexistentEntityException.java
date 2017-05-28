@@ -1,4 +1,4 @@
-package mx.edu.itoaxaca.citaspacientes.cotrol.exceptions;
+package mx.edu.itoaxaca.citaspacientes.control.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {

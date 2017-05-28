@@ -103,7 +103,8 @@ public class Paciente implements Serializable {
     public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
-
+        
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -127,6 +128,6 @@ public class Paciente implements Serializable {
     @Override
     public String toString() {
         return "mx.edu.itoaxaca.otras.modelo.Paciente[ idpaciente=" + idpaciente + " ]";
-    }
+    }    
     
 }

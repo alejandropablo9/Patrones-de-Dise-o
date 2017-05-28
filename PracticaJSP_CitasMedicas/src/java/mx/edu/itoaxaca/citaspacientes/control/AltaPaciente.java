@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.edu.itoaxaca.citaspacientes.cotrol;
+package mx.edu.itoaxaca.citaspacientes.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -83,7 +83,7 @@ public class AltaPaciente extends HttpServlet {
                 control.create(paciente);
                 //response.sendRedirect("index.jsp");
             }catch(Exception e){
-                out.println("<!DOCTYPE html>");
+            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Error</title>");            

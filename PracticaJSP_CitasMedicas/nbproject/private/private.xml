@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/cotrol/PacienteJpaController.java</file>
-            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/modelo/Paciente.java</file>
-            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/cotrol/AltaPaciente.java</file>
-            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/web/altaPaciente.jsp</file>
-            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/cotrol/Pacientes.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/ListCitas.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/AltaPaciente.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/PacienteJpaController.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/AltaCita.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/CitasJpaController.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/Calendario.java</file>
         </group>
     </open-files>
 </project-private>
