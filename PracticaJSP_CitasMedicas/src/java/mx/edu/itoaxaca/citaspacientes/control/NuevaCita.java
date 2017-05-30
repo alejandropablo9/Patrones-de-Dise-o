@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
+import mx.edu.itoaxaca.citaspacientes.control.JPA.PacienteJpaController;
 import mx.edu.itoaxaca.citaspacientes.modelo.Citas;
 import mx.edu.itoaxaca.citaspacientes.modelo.Paciente;
 /**

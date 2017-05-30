@@ -7,8 +7,10 @@ package mx.edu.itoaxaca.citaspacientes.modelo;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,10 +20,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +40,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Citas.findByFecha", query = "SELECT c FROM Citas c WHERE c.fecha = :fecha")
     , @NamedQuery(name = "Citas.findByHora", query = "SELECT c FROM Citas c WHERE c.hora = :hora")})
 public class Citas implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcita")
+    private Collection<Consulta> consultaCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -128,6 +135,15 @@ public class Citas implements Serializable {
     private String formatoDate(Date time, String formato) {
         SimpleDateFormat df = new SimpleDateFormat(formato);
         return df.format(time);
+    }
+
+    @XmlTransient
+    public Collection<Consulta> getConsultaCollection() {
+        return consultaCollection;
+    }
+
+    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
+        this.consultaCollection = consultaCollection;
     }
     
 }

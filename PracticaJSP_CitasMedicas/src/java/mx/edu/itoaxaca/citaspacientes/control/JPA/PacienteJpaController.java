@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.edu.itoaxaca.citaspacientes.control;
+package mx.edu.itoaxaca.citaspacientes.control.JPA;
 
 import java.io.Serializable;
 import java.util.List;
@@ -135,6 +135,13 @@ public class PacienteJpaController implements Serializable {
            // em.close();
         }
     }
+           
+    public List<Paciente> findPacienteWithName(String name) {
+        EntityManager em = emf.createEntityManager();
+        return em.createNamedQuery("Paciente.findByNombre")
+            .setParameter("nombre",name)
+            .getResultList();       
+    }
 
     public Paciente findPaciente(Integer id) {
         EntityManager em = getEntityManager();
@@ -144,7 +151,7 @@ public class PacienteJpaController implements Serializable {
            // em.close();
         }
     }
-
+        
     public int getPacienteCount() {
         EntityManager em = getEntityManager();
         try {

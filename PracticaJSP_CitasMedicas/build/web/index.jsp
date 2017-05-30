@@ -22,6 +22,8 @@
                     <li class="pure-menu-item pure-menu-selected"><a href="." class="pure-menu-link"> inicio </a>
                     <li class="pure-menu-item"><a href="altaPaciente.jsp" class="pure-menu-link">
                             Agregar Paciente</a></li>
+                    <li class="pure-menu-item"><a href="buscarPaciente.jsp" class="pure-menu-link">
+                            Buscar Paciente</a></li>
                     <li class="pure-menu-item"><a href="listaPacientes.jsp" class="pure-menu-link">
                             Lista Pacientes</a></li>
                     <li class="pure-menu-item"><a href="seleccionarPaciente.jsp" class="pure-menu-link">
