@@ -7,6 +7,7 @@ package mx.edu.itoaxaca.citaspacientes.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -57,7 +58,8 @@ public class AltaConsulta extends HttpServlet {
         emf = Persistence.createEntityManagerFactory("PracticaJSP_CitasMedicasPU"); 
         
         cc = new CitasJpaController(utx, emf);
-                
+        co = new ConsultaJpaController(utx, emf);       
+        
         Citas cita = cc.findCitas(idcita);
         Paciente paciente = cita.getPaciente();
         
@@ -87,22 +89,32 @@ public class AltaConsulta extends HttpServlet {
                     + "<h4> Hora de la cita: " + cita.getHora() + "</h4>"
                     + "</p>");
             
-            out.println("<form action='AltaConsulta' method='POST'>");
-            out.println("<input type='hidden' class=\"c-field\" type=\"text\" name='idpaciente'"
-                        + "value='"+paciente.getIdpaciente()+"'"
-                        + "display=none>");
-            out.println("<input type='hidden' class=\"c-field\" type=\"text\" name='idcita'"
-                        + "value='"+cita.getIdcitas()+"'"
-                        + " display='none'>");
-            out.println("<label class=\"c-label o-form-element\">\n" +
-                        "  Diagnostico:\n" +
-                        "  <textarea class=\"c-field c-field--label\" name='diagnostico' "
-                            + "placeholder=\"Diagnostico\">\n" 
-                            + "</textarea> \n"
-                        + "</label>");
-            out.println("<button type='submit' class=\"c-button c-button--info\">Guardar</button>");
-            out.println("</form>");  
+            Consulta cons = getEstatus(cita);
             
+            if(cons == null){
+                out.println("<form action='AltaConsulta' method='POST'>");
+                out.println("<input type='hidden' class=\"c-field\" type=\"text\" name='idpaciente'"
+                            + "value='"+paciente.getIdpaciente()+"'"
+                            + "display=none>");
+                out.println("<input type='hidden' class=\"c-field\" type=\"text\" name='idcita'"
+                            + "value='"+cita.getIdcitas()+"'"
+                            + " display='none'>");
+                out.println("<label class=\"c-label o-form-element\">\n" +
+                            "  Diagnostico:\n" +
+                            "  <textarea class=\"c-field c-field--label\" name='diagnostico' "
+                                + "placeholder=\"Diagnostico\">\n" 
+                                + "</textarea> \n"
+                            + "</label>");
+                out.println("<button type='submit' class=\"c-button c-button--info\">Guardar</button>");
+                out.println("</form>");  
+            }else{
+                out.println("<label class=\"c-label o-form-element\">\n" +
+                            "  Diagnostico:\n" +
+                            "  <textarea class=\"c-field c-field--label\" name='diagnostico' "
+                                + "placeholder=\"Diagnostico\">\n" 
+                                + cons.getDiagnostico() +"</textarea> \n"
+                            + "</label>");
+            }
             out.println("</div>");
             out.println("</div>");
                                                                       
@@ -182,5 +194,16 @@ public class AltaConsulta extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private Consulta getEstatus(Citas dato){              
+        List<Consulta> consultas = co.findConsultaEntities();
+        
+        consultas.removeIf(consulta -> !(consulta.getIdcita().equals(dato)));                
+        System.out.println("size: " + consultas.size());        
+        
+        if(consultas.size() > 0 )
+            return consultas.get(0);
+        return null;                     
+    }
 
 }

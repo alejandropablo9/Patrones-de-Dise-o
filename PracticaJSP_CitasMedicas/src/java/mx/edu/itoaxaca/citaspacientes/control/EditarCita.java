@@ -33,8 +33,8 @@ import mx.edu.itoaxaca.citaspacientes.modelo.Paciente;
  *
  * @author alejandro
  */
-@WebServlet(name = "Calendario", urlPatterns = {"/Calendario"})
-public class Calendario extends HttpServlet {
+@WebServlet(name = "EditarCita", urlPatterns = {"/EditarCita"})
+public class EditarCita extends HttpServlet {
     
     @PersistenceUnit
     private EntityManagerFactory emf;    
@@ -62,9 +62,11 @@ public class Calendario extends HttpServlet {
         
         String idT = request.getParameter("idpaciente");       
         String diaselT = request.getParameter("diasel");                
+        String idcitaT = request.getParameter("idcita");
         
         Integer id = 0;
         Integer diasel = 0;
+        Integer idcita = 0;
         
         PrintWriter out = response.getWriter();
         
@@ -72,9 +74,12 @@ public class Calendario extends HttpServlet {
             id = Integer.parseInt(idT);
         if(diaselT != null)
             diasel = Integer.parseInt(diaselT);
+        if(idcitaT != null)
+            idcita = Integer.parseInt(idcitaT);
         
-        Paciente paciente = cp. findPaciente(id);                
-            
+        Paciente paciente = cp. findPaciente(id);                        
+        Citas cita = cc.findCitas(idcita);
+        
         Calendar calendar = Calendar.getInstance();
         calendar.getFirstDayOfWeek();
         
@@ -165,12 +170,12 @@ public class Calendario extends HttpServlet {
             for (int i = c.get(Calendar.DAY_OF_MONTH); i <= daysInMonth; i++) {
                 String estaFecha = yy+"-"+(mm+1)+"-"+ i;
                 if(diaDisponible(formatoDate(estaFecha, "yyyy-MM-dd"))){
-                    out.println("<a href='Calendario?idpaciente="+id+"&diasel=" + i + "' "
+                    out.println("<a href='EditarCita?idcita=" + idcita +"&idpaciente="+id+"&diasel=" + i + "' "
                         + "class=\"c-calendar__date c-calendar__date--in-month\">" + i +"</a>");
                 }
                 else{
                     out.println(""
-                        + "<a href='Calendario?idpaciente="+id+"&diasel=" + i + "' "
+                        + "<a href='EditarCita?idcita=" + idcita +"&idpaciente="+id+"&diasel=" + i + "' "
                         + "class=\"c-calendar__date c-calendar__date--in-month c-calendar__date--selected\">" 
                             + i +"</a>");
                 }
@@ -179,10 +184,13 @@ public class Calendario extends HttpServlet {
             
             if(diaselT != null && paciente != null){
                 out.println("<div class=\"o-container o-container--xsmall\">");
-                    out.println("<form action='NuevaCita' metod='POST'>");
-                    out.println("<div class=\"c-input-group c-input-group--stacked\"  metod='post'>");
+                    out.println("<form action='NuevaCita' metod='PUT'>");
+                    out.println("<div class=\"c-input-group c-input-group--stacked\">");
                     out.println("<h3>Datos de la cita</h3>");
                     out.println("<div class=\"o-field\">");      
+                     out.println("<label for=\"idcita\">Fecha</label>");                
+                    out.println("<input class=\"c-field\" name='idcita' value='"
+                            +cita.getIdcitas()+"' type='hidden'>");
                     out.println("<label for=\"fecha\">Fecha</label>");                
                     out.println("<input class=\"c-field\" name='fecha' value='"
                             +ffecha+"' readonly>");                    
@@ -270,7 +278,7 @@ public class Calendario extends HttpServlet {
             SimpleDateFormat df = new SimpleDateFormat(formato);
             return df.parse(time);
         } catch (ParseException ex) {
-            Logger.getLogger(Calendario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarCita.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

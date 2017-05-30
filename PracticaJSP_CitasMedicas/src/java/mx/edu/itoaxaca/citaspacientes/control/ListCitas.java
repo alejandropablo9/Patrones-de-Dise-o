@@ -115,7 +115,9 @@ public class ListCitas extends HttpServlet {
                 out.println("<td class='c-table__cell'>" + (getEstatus(dato)? "Asistió" : "Pendiente") + "</td>");                
                 out.println("<td class='c-table__cell'>"
                         //+ "<class=\"c-input-group c-button-group--rounded\">\n"
-                        + "<a href='#' class=\"c-button c-button--brand\"> Editar</a></td>\n"
+                        + "<a href='EditarCita?idcita="+dato.getIdcitas()+"&"
+                                + "idpaciente="+paciente.getIdpaciente()
+                            +"' class=\"c-button c-button--brand\"> Editar</a></td>\n"
                         + "<td class='c-table__cell'><a href='#' class=\"c-button\"> Eliminar </a></td>\n"
                         + "<td class='c-table__cell'><a href='AltaConsulta?idcita="+dato.getIdcitas()+"' class=\"c-button c-button--info\">Consulta</a>\n"
                         //+ 

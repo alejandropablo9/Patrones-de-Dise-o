@@ -105,7 +105,6 @@ public class NuevaCita extends HttpServlet {
             out.println("<a href = 'nuevaCita.jsp' > Nueva cita </a> ");
             out.println("</body>");
             out.println("</html>"); 
-            emf.close();  
         }catch(Exception e){
         }
     }
@@ -139,6 +138,71 @@ public class NuevaCita extends HttpServlet {
         processRequest(request, response);
     }
 
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        emf = Persistence.createEntityManagerFactory("PracticaJSP_CitasMedicasPU");             
+        cc = new CitasJpaController(utx, emf);
+        cp = new PacienteJpaController(utx, emf);
+        try {                        
+            String fecha = request.getParameter("fecha");
+            String hora = request.getParameter("hora");
+            Integer idpaciente = Integer.parseInt(request.getParameter("paciente"));
+            Integer idcita = Integer.parseInt(request.getParameter("idcita"));
+            Date _fecha = formatoDate(fecha, "yyyy-MM-dd");            
+            Date _hora = formatoDate(hora, "HH:mm:ss");
+            
+            String mensaje = "";            
+            Citas citas = new Citas();            
+            Paciente paciente = encuentraPaciente(idpaciente);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NuevaCita</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            
+            if(paciente != null){
+                if(horarioDisponible(_fecha, _hora)){                    
+                    citas.setIdcitas(idcita);
+                    citas.setFecha(_fecha);
+                    citas.setHora(_hora);            
+                    citas.setPaciente(paciente);                         
+                    out.println("<h1>Servlet AltaPaciente at " + request.getContextPath() + "</h1>");
+                    out.println("<h4> Feha:" +  citas.getFecha() + "</h4>");
+                    out.println("<h4> Hora: " + citas.getHora() + "</h4>");
+                    out.println("<h4> Paciente: " + citas.getPaciente() + "</h4>");
+                    try {
+                        cc.edit(citas);                
+                    }catch(Exception e){
+                        out.println("<!DOCTYPE html>");
+                        out.println("<html>");
+                        out.println("<head>");
+                        out.println("<title>Error</title>");            
+                        out.println("</head>");
+                        out.println("<body>");
+                        out.println("<h1>Error al agregar cita </h1>");
+                        out.println("<h1>" + e + "</h1>");                        
+                        out.println("</body>");                        
+                        out.println("</html>");
+                    }
+                }else{
+                    mensaje = "el horario no esta disponible";
+                }
+            }else{
+                mensaje = "el paciente no esta registrado";
+            }
+            out.println("<h4>" + mensaje + "</h4>");
+            out.println("<a href = 'nuevaCita.jsp' > Nueva cita </a> ");
+            out.println("</body>");
+            out.println("</html>"); 
+        }catch(Exception e){
+        }
+    }
+
+    
     /**
      * Returns a short description of the servlet.
      *
