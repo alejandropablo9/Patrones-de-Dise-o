@@ -59,8 +59,10 @@ public class ListCitas extends HttpServlet {
         cp = new PacienteJpaController(utx, emf);
         co = new ConsultaJpaController(utx, emf);
         
-        String idpacienteparam = request.getParameter("idpaciente");
+        String idpacienteparam = request.getParameter("idpaciente");        
         int idpaciente = 0;
+        
+        
         Paciente paciente = null;
         PrintWriter out = response.getWriter();
         lista = cc.findCitasEntities();
@@ -115,10 +117,10 @@ public class ListCitas extends HttpServlet {
                 out.println("<td class='c-table__cell'>" + (getEstatus(dato)? "Asistió" : "Pendiente") + "</td>");                
                 out.println("<td class='c-table__cell'>"
                         //+ "<class=\"c-input-group c-button-group--rounded\">\n"
-                        + "<a href='EditarCita?idcita="+dato.getIdcitas()+"&"
+                        + "<a href='EditarCitas?idcita="+dato.getIdcitas()+"&"
                                 + "idpaciente="+paciente.getIdpaciente()
                             +"' class=\"c-button c-button--brand\"> Editar</a></td>\n"
-                        + "<td class='c-table__cell'><a href='#' class=\"c-button\"> Eliminar </a></td>\n"
+                        + "<td class='c-table__cell'><a href='EliminarCita?idcita="+dato.getIdcitas()+"' class=\"c-button\"> Eliminar </a></td>\n"
                         + "<td class='c-table__cell'><a href='AltaConsulta?idcita="+dato.getIdcitas()+"' class=\"c-button c-button--info\">Consulta</a>\n"
                         //+ 
                         + "</td>");

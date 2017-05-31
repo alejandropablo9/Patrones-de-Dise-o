@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/PacienteJpaController.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/EditarCitas.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/ListCitas.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/SelectPaciente.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/EditCita.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/EliminarCita.java</file>
+            <file>file:/home/alejandro/Programacion/Patterns/Patrones-de-Diseno/PracticaJSP_CitasMedicas/src/java/mx/edu/itoaxaca/citaspacientes/control/Calendario.java</file>
         </group>
     </open-files>
 </project-private>

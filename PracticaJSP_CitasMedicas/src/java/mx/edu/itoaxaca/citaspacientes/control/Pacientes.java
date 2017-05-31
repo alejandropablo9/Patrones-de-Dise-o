@@ -49,10 +49,12 @@ public class Pacientes extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         emf = Persistence.createEntityManagerFactory("PracticaJSP_CitasMedicasPU");                     
         cp = new PacienteJpaController(utx, emf);
-        List<Paciente> lista = cp.findPacienteEntities();   
+        
+        List<Paciente> lista = null;   
         
         try (PrintWriter out = response.getWriter()) {            
             /* TODO output your page here. You may use following sample code. */
+            lista = cp.findPacienteEntities();   
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

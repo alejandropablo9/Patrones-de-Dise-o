@@ -33,8 +33,8 @@ import mx.edu.itoaxaca.citaspacientes.modelo.Paciente;
  *
  * @author alejandro
  */
-@WebServlet(name = "EditarCita", urlPatterns = {"/EditarCita"})
-public class EditarCita extends HttpServlet {
+@WebServlet(name = "EditarCitas", urlPatterns = {"/EditarCitas"})
+public class EditarCitas extends HttpServlet {
     
     @PersistenceUnit
     private EntityManagerFactory emf;    
@@ -170,12 +170,12 @@ public class EditarCita extends HttpServlet {
             for (int i = c.get(Calendar.DAY_OF_MONTH); i <= daysInMonth; i++) {
                 String estaFecha = yy+"-"+(mm+1)+"-"+ i;
                 if(diaDisponible(formatoDate(estaFecha, "yyyy-MM-dd"))){
-                    out.println("<a href='EditarCita?idcita=" + idcita +"&idpaciente="+id+"&diasel=" + i + "' "
+                    out.println("<a href='EditarsCita?idcita=" + idcita +"&idpaciente="+id+"&diasel=" + i + "' "
                         + "class=\"c-calendar__date c-calendar__date--in-month\">" + i +"</a>");
                 }
                 else{
                     out.println(""
-                        + "<a href='EditarCita?idcita=" + idcita +"&idpaciente="+id+"&diasel=" + i + "' "
+                        + "<a href='EditarCitas?idcita=" + idcita +"&idpaciente="+id+"&diasel=" + i + "' "
                         + "class=\"c-calendar__date c-calendar__date--in-month c-calendar__date--selected\">" 
                             + i +"</a>");
                 }
@@ -184,7 +184,7 @@ public class EditarCita extends HttpServlet {
             
             if(diaselT != null && paciente != null){
                 out.println("<div class=\"o-container o-container--xsmall\">");
-                    out.println("<form action='NuevaCita' metod='PUT'>");
+                    out.println("<form action='EditCita' metod='POST'>");
                     out.println("<div class=\"c-input-group c-input-group--stacked\">");
                     out.println("<h3>Datos de la cita</h3>");
                     out.println("<div class=\"o-field\">");      
@@ -218,6 +218,16 @@ public class EditarCita extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }catch(Exception e){
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Error</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Error al agregar cita </h1>");
+            out.println("<h1>" + e + "</h1>");                        
+            out.println("</body>");                        
+            out.println("</html>");
         }                                                    
     }
 
@@ -278,7 +288,7 @@ public class EditarCita extends HttpServlet {
             SimpleDateFormat df = new SimpleDateFormat(formato);
             return df.parse(time);
         } catch (ParseException ex) {
-            Logger.getLogger(EditarCita.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarCitas.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

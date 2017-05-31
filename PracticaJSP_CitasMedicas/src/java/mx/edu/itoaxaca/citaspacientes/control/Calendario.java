@@ -179,8 +179,8 @@ public class Calendario extends HttpServlet {
             
             if(diaselT != null && paciente != null){
                 out.println("<div class=\"o-container o-container--xsmall\">");
-                    out.println("<form action='NuevaCita' metod='POST'>");
-                    out.println("<div class=\"c-input-group c-input-group--stacked\"  metod='post'>");
+                    out.println("<form action='NuevaCita' metod='post'>");
+                    out.println("<div class=\"c-input-group c-input-group--stacked\">");
                     out.println("<h3>Datos de la cita</h3>");
                     out.println("<div class=\"o-field\">");      
                     out.println("<label for=\"fecha\">Fecha</label>");                
